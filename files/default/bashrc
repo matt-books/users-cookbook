@@ -1,0 +1,13 @@
+# .bashrc
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
+# User specific aliases and functions
+PATH=.:$PATH:$HOME/.local/bin:$HOME/bin
+export PATH
+export CLICOLOR=1
+PS1='\[\033[0;35m\]\u\[\033[0;31m\]@\[\033[0;32m\]\h\[\033[1;37m\]:\[\033[1;34m\]\w\[\033[1;33m\]\$\[\033[00m\] '
+

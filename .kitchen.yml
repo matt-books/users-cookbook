@@ -1,0 +1,28 @@
+---
+driver:
+  name: ec2
+  region: us-west-2
+  security_group_ids: ["sg-76e1cf10", "sg-5de0ce3b", "sg-ecf5cb8a"]
+  subnet_id: subnet-674b0203
+  associate_public_ip: true
+  interface: dns
+  require_chef_omnibus: true
+
+provisioner:
+  name: chef_solo
+
+platforms:
+  - name: amazon-t2micro-100816
+    driver:
+      image_id: ami-fa98439a
+      tags:
+        Name: test-kitchen-amazon
+    transport:
+      ssh_key: /Users/matt/.ssh/amazon-mattpcv2.pem
+      username: ec2-user
+
+suites:
+  - name: default
+    run_list:
+      - recipe[users-cookbook::default]
+    attributes:
